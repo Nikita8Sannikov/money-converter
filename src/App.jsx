@@ -3,7 +3,8 @@ import { useState } from "react";
 import {
   DEFAULT_BASE_CODE,
   DEFAULT_TARGET_CODE,
-  CODES
+  DEFAULT_BASE_VALUE,
+  DEFAULT_TARGET_VALUE,
 } from "./constants";
 import  useExchangeRate  from "../hooks/useExchangeRate";
 import CurretnRow from "./components/CurrentRow";
@@ -11,8 +12,8 @@ import CurretnRow from "./components/CurrentRow";
 function App() {
   const [baseCode, setBaseCode] = useState(DEFAULT_BASE_CODE);
   const [targetCode, setTargetCode] = useState(DEFAULT_TARGET_CODE);
-  const [baseValue, setbaseValue] = useState('')
-  const [targetValue, setTargetValue] = useState('')
+  const [baseValue, setbaseValue] = useState(DEFAULT_BASE_VALUE)
+  const [targetValue, setTargetValue] = useState(DEFAULT_TARGET_VALUE)
   const { conversionRate } = useExchangeRate({
     baseCode,
     targetCode,

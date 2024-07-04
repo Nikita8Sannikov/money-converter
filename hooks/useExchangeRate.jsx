@@ -4,7 +4,7 @@ import { useEffect, useCallback, useState  } from "react";
 export default function useExchangeRate({baseCode, targetCode}) {
     const [conversionRate, setConversionRate] = useState(null);
 
-    const getConversionRate = async () => {
+    const getConversionRate = useCallback(async () => {
         try {
           const res = await fetch(
             `${import.meta.env.VITE_API_URL}/${
@@ -19,10 +19,9 @@ export default function useExchangeRate({baseCode, targetCode}) {
         } finally {
          
         }
-      }
+      }, [baseCode, targetCode])
     
      
-    
       useEffect(() => {
         getConversionRate()
         console.log('render');
