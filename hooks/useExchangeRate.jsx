@@ -24,7 +24,8 @@ export default function useExchangeRate({baseCode, targetCode}) {
      
     
       useEffect(() => {
-        getConversionRate();
+        getConversionRate()
+        console.log('render');
       }, [getConversionRate]);
     
       return {
