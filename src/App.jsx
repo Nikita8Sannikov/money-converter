@@ -8,7 +8,7 @@ import {
   DEFAULT_TO_FIXED
 } from "./constants";
 import  useExchangeRate  from "../hooks/useExchangeRate";
-import CurretnRow from "./components/CurrentRow";
+import CurretnRow from "./components/current-row/CurrentRow";
 
 function App() {
   const [baseCode, setBaseCode] = useState(DEFAULT_BASE_CODE);
@@ -66,12 +66,14 @@ function App() {
         <h1>Конвертер валют</h1>
 
     <CurretnRow
+    hasMargin
     inputValue={baseValue}
     selectedValue={baseCode}
     onInputChange={onBaseValueChange}
     onSelectChange={onBaseCodeChange}
     />
     <CurretnRow
+    hasMargin
     inputValue={targetValue}
     selectedValue={targetCode}
     onInputChange={onTargetValueChange}
