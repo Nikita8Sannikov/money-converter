@@ -1,14 +1,12 @@
 import React from 'react'
 import { Alert } from "antd";
 import styles from './Error.module.css'
-const Error = () => {
+const Error = ({description}) => {
   return (
     <Alert
     className={styles.root}
     message="Error"
-    type="error"
-    closable
-    onClose={onClose}
+    type="error"  
     description={description}
   />
   )

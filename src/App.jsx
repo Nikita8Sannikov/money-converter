@@ -9,13 +9,14 @@ import {
 } from "./constants";
 import  useExchangeRate  from "../hooks/useExchangeRate";
 import CurretnRow from "./components/current-row/CurrentRow";
+import Error from "./components/error/Error";
 
 function App() {
   const [baseCode, setBaseCode] = useState(DEFAULT_BASE_CODE);
   const [targetCode, setTargetCode] = useState(DEFAULT_TARGET_CODE);
   const [baseValue, setBaseValue] = useState(DEFAULT_BASE_VALUE)
   const [targetValue, setTargetValue] = useState(DEFAULT_TARGET_VALUE)
-  const { conversionRate } = useExchangeRate({
+  const { conversionRate, error } = useExchangeRate({
     baseCode,
     targetCode,
   });
