@@ -3,7 +3,7 @@ import { useEffect, useCallback, useState  } from "react";
 
 export default function useExchangeRate({baseCode, targetCode}) {
     const [conversionRate, setConversionRate] = useState(null);
-
+    const [error, setError] = useState(null)
     const getConversionRate = useCallback(async () => {
         try {
           const res = await fetch(
@@ -15,11 +15,11 @@ export default function useExchangeRate({baseCode, targetCode}) {
           console.log(data.conversion_rate);
           setConversionRate(data.conversion_rate);
         } catch (error) {
-          
+          setError(error.message)
         } finally {
          
         }
-      }, [baseCode, targetCode])
+      }, [baseCode, targetCode, setError])
     
      
       useEffect(() => {
@@ -28,6 +28,7 @@ export default function useExchangeRate({baseCode, targetCode}) {
       }, [getConversionRate]);
     
       return {
-        conversionRate
+        conversionRate,
+        error
       };
 }

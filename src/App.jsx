@@ -62,6 +62,9 @@ function App() {
  
   return (
     <>
+
+      {error && <Error description={error}/>}
+
      <div className="container">
         <h1>Конвертер валют</h1>
 
