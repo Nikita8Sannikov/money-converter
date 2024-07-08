@@ -4,8 +4,10 @@ import { useEffect, useCallback, useState  } from "react";
 export default function useExchangeRate({baseCode, targetCode}) {
     const [conversionRate, setConversionRate] = useState(null);
     const [error, setError] = useState(null)
+    const [isLoading, setIsloading] = useState(false);
     const getConversionRate = useCallback(async () => {
         try {
+          setIsloading(true)
           const res = await fetch(
             `${import.meta.env.VITE_API_URL}/${
               import.meta.env.VITE_API_KEY
@@ -17,9 +19,9 @@ export default function useExchangeRate({baseCode, targetCode}) {
         } catch (error) {
           setError(error.message)
         } finally {
-         
+          setIsloading(false)
         }
-      }, [baseCode, targetCode, setError])
+      }, [baseCode, targetCode, setError, setIsloading])
     
      
       useEffect(() => {
@@ -29,6 +31,7 @@ export default function useExchangeRate({baseCode, targetCode}) {
     
       return {
         conversionRate,
-        error
+        error,
+        isLoading
       };
 }
